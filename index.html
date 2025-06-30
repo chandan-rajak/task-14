@@ -1,12 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task 14</title>
+  <title>JavaScript Functions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    section {
+      margin-bottom: 25px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h2 {
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-    <h1>Open console for output</h1>
-    <script src="app.js"></script>
+
+  <h1>JavaScript Function Examples</h1>
+
+  <!-- 1. Filter Negative Numbers -->
+  <section>
+    <h2>1. Filter Out Negative Numbers</h2>
+    <p id="filterNegatives"></p>
+  </section>
+
+  <!-- 2. Difference from 13 -->
+  <section>
+    <h2>2. Difference from 13 (Double if >13)</h2>
+    <p id="diff13"></p>
+  </section>
+
+  <!-- 3. Fibonacci Series -->
+  <section>
+    <h2>3. Fibonacci Series</h2>
+    <p id="fibonacciSeries"></p>
+  </section>
+
+  <!-- 4. Sum of Multiples of 3 and 5 under 1000 -->
+  <section>
+    <h2>4. Sum of Multiples of 3 and 5 Under 1000</h2>
+    <p id="sumMultiples"></p>
+  </section>
+
+  <!-- 5. Cube of a Number Using Function Object -->
+  <section>
+    <h2>5. Cube of a Number (Using Function Object)</h2>
+    <p id="cubeResult"></p>
+  </section>
+
+  <script>
+    // 1. Filter Out Negative Numbers
+    function filterNegatives(arr) {
+      return arr.filter(num => num >= 0);
+    }
+    const numbers = [10, -5, 20, -30, 50];
+    document.getElementById("filterNegatives").innerText = `Original: [${numbers}] → Filtered: [${filterNegatives(numbers)}]`;
+
+    // 2. Difference from 13
+    function diffFrom13(n) {
+      return (n > 13) ? 2 * Math.abs(n - 13) : Math.abs(n - 13);
+    }
+    const num2 = 20;
+    document.getElementById("diff13").innerText = `Input: ${num2} → Result: ${diffFrom13(num2)}`;
+
+    // 3. Fibonacci Series
+    function fibonacci(n) {
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n);
+    }
+    document.getElementById("fibonacciSeries").innerText = `First 10 Fibonacci numbers: ${fibonacci(10).join(", ")}`;
+
+    // 4. Sum of Multiples of 3 and 5 Under 1000
+    function sumMultiplesOf3And5(limit) {
+      let sum = 0;
+      for (let i = 0; i < limit; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+          sum += i;
+        }
+      }
+      return sum;
+    }
+    document.getElementById("sumMultiples").innerText = `Sum: ${sumMultiplesOf3And5(1000)}`;
+
+    // 5. Cube Using Function Object
+    const cube = new Function("x", "return x * x * x;");
+    const inputCube = 4;
+    document.getElementById("cubeResult").innerText = `Cube of ${inputCube}: ${cube(inputCube)}`;
+  </script>
+
 </body>
 </html>
